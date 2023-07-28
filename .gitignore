@@ -399,3 +399,5 @@ FodyWeavers.xsd
 
 TaskManager.Backend/appsettings.Development.json
 TaskManager.Backend/appsettings.json
+
+.DS_Store
