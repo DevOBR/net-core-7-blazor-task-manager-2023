@@ -1,6 +1,6 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore;
-using TaskManager.Share.Entities;
+using TaskManager.Data.Entities;
 
 namespace TaskManager.Data
 {

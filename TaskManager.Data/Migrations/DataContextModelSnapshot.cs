@@ -22,7 +22,7 @@ namespace TaskManager.Data.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("TaskManager.Share.Entities.MyTask", b =>
+            modelBuilder.Entity("TaskManager.Data.Entities.MyTask", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()

@@ -1,6 +1,7 @@
+using System.Threading;
 using Microsoft.AspNetCore.Mvc;
-using TaskManager.Data;
-using TaskManager.Share.Entities;
+using TaskManager.Service.Interfaces;
+using TaskManager.Share.Models;
 
 namespace TaskManager.Backend.Controllers
 {
@@ -8,75 +9,60 @@ namespace TaskManager.Backend.Controllers
     [ApiController]
     public class MyTasksController : ControllerBase
     {
-        private readonly DataContext _context;
+        private readonly IMyTaskService _myTaskService;
 
-        public MyTasksController(DataContext context)
+        public MyTasksController(IMyTaskService myTaskService)
         {
-            this._context = context;
+            _myTaskService = myTaskService;
         }
 
         [HttpGet]
-        public IActionResult Get()
+        public async Task<IActionResult> GetAsync(CancellationToken cancellationToken)
         {
-
-            return Ok(_context.MyTasks.ToList());
+            return Ok(await _myTaskService.GetMyTasksAll(asNoTracking: true, cancellationToken).ConfigureAwait(false));
         }
 
         [HttpGet("{id:int}")]
-        public IActionResult Get(int id)
+        public async Task<IActionResult> GetByIdAsync(int id, CancellationToken cancellationToken)
         {
-            var task = _context.MyTasks.FirstOrDefault(x => x.Id == id);
+            var task = await _myTaskService.GetMyTaskByIdAsync(id, cancellationToken).ConfigureAwait(false);
 
-            if (task == null)
-            {
+            if (task.Id == 0)
                 return NotFound();
-            }
 
             return Ok(task);
         }
 
         [HttpPost]
-        public IActionResult Post(MyTask myTask)
+        public async Task<IActionResult> PostAsync(MyTaskDto myTaskDto, CancellationToken cancellationToken)
         {
-            _context.Add(myTask);
-            _context.SaveChanges();
-            return Ok(myTask);
+            await _myTaskService.CreateMyTaskAsync(myTaskDto, cancellationToken).ConfigureAwait(false);
+
+            return Ok(myTaskDto);
         }
 
         [HttpPut]
-        public IActionResult Put(MyTask myTask)
+        public async Task<IActionResult> PutAsync(MyTaskDto myTaskDto, CancellationToken cancellationToken)
         {
-            var task = _context.MyTasks.FirstOrDefault(x => x.Id == myTask.Id);
+            
+            var result = await _myTaskService.EditMyTaskAsync(myTaskDto, cancellationToken).ConfigureAwait(false);
 
-            if (task == null)
-            {
+            if (!result)
                 return NotFound();
-            }
 
-            task.Description = myTask.Description;
-            task.Date = myTask.Date;
-            task.IsCompleted = myTask.IsCompleted;
-
-            _context.Update(task);
-            _context.SaveChanges();
-
-            return Ok(task);
+            return Ok(myTaskDto);
         }
 
         [HttpDelete("{id:int}")]
-        public IActionResult Delete(int id)
+        public async Task<IActionResult> DeleteAsync(int id, CancellationToken cancellationToken)
         {
-            var task = _context.MyTasks.FirstOrDefault(x => x.Id == id);
+            var result = await _myTaskService.DeleteMyTaskByIdAsync(id, cancellationToken).ConfigureAwait(false);
 
-            if (task == null)
-            {
+            if (!result)
                 return NotFound();
-            }
-
-            _context.Remove(task);
-            _context.SaveChanges();
 
             return NoContent();
+
         }
 
     }

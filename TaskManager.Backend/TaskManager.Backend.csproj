@@ -28,7 +28,10 @@
     <ProjectReference Include="..\TaskManager.Share\TaskManager.Share.csproj">
       <GlobalPropertiesToRemove></GlobalPropertiesToRemove>
     </ProjectReference>
-    <ProjectReference Include="..\TaskManager.Data\TaskManager.Data.csproj">
+    <ProjectReference Include="..\TaskManager.Repository\TaskManager.Repository.csproj">
+      <GlobalPropertiesToRemove></GlobalPropertiesToRemove>
+    </ProjectReference>
+    <ProjectReference Include="..\TaskManager.Service\TaskManager.Service.csproj">
       <GlobalPropertiesToRemove></GlobalPropertiesToRemove>
     </ProjectReference>
   </ItemGroup>

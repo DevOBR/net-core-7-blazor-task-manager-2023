@@ -1,10 +1,9 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace TaskManager.Share.Entities
+namespace TaskManager.Share.Models
 {
-    public class MyTask
-    {
-        // auto assignable property - primary key table
+	public class MyTaskDto
+	{
         public int Id { get; set; }
 
         [Required]
@@ -14,7 +13,6 @@ namespace TaskManager.Share.Entities
         public DateTime Date { get; set; }
 
         public bool IsCompleted { get; set; }
-
     }
 }
 

@@ -17,4 +17,17 @@
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="7.0.9" PrivateAssets="all" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Remove="Pages\Tasks\" />
+    <None Remove="WebRepository\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Pages\Tasks\" />
+    <Folder Include="WebRepository\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\TaskManager.Share\TaskManager.Share.csproj">
+      <GlobalPropertiesToRemove></GlobalPropertiesToRemove>
+    </ProjectReference>
+  </ItemGroup>
 </Project>

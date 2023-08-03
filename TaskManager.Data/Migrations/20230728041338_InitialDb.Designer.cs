@@ -12,7 +12,7 @@ using TaskManager.Data;
 namespace TaskManager.Data.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20230727065458_InitialDb")]
+    [Migration("20230728041338_InitialDb")]
     partial class InitialDb
     {
         /// <inheritdoc />
@@ -25,7 +25,7 @@ namespace TaskManager.Data.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("TaskManager.Share.Entities.MyTask", b =>
+            modelBuilder.Entity("TaskManager.Data.Entities.MyTask", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
