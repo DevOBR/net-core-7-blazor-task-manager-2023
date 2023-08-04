@@ -3,13 +3,15 @@
 @inject IWebRepository repository;
 <h3>Taks</h3>
 
-@if(Tasks is null)
+@if (Tasks is null)
 {
     // due to the first time the request takes some minutes, tasks could be null
     <p>Loading...</p>
 }
 else
 {
+    <a href="/tasks/create" class="btn btn-primary">New Task</a>
+
     <table class="table">
         <thead>
             <tr>
@@ -26,6 +28,11 @@ else
                     <td>@task.Description</td>
                     <td>@task.Date</td>
                     <td>@task.IsCompleted</td>
+                    <td>
+                        <a href="/tasks/edit/@task.Id" class="btn btn-warning">Edit</a>
+                        <button class="btn btn-info">Complete</button>
+                        <button class="btn btn-danger">Delete</button>
+                    </td>
                 </tr>
             }
         </tbody>
