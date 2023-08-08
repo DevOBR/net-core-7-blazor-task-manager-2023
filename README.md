@@ -76,8 +76,8 @@ To run this project on your local machine, follow these steps:
     dotnet ef database update --startup-project=TaskManager.Backend --project TaskManager.Data
     
 5. In case you need to recreate the init migration should execute the next command:
-  ```shell
-  dotnet ef migrations add InitialDb --startup-project=TaskManager.Backend --project TaskManager.Data
+    ```shell
+    dotnet ef migrations add InitialDb --startup-project=TaskManager.Backend --project TaskManager.Data
 
 
 4. Run the application:
