@@ -131,7 +131,7 @@ else
             Timer = 3000
         });
 
-        await toast.FireAsync(icon: SweetAlertIcon.Info, message: $"Task {(task.IsCompleted ? "uncomplete" : "complete")} successfully.");
+        await toast.FireAsync(icon: SweetAlertIcon.Info, message: $"Task {(!task.IsCompleted ? "uncompleted" : "completed")} successfully.");
     }
 
     private void Return()
