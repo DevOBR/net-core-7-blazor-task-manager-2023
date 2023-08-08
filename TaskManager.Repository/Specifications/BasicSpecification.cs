@@ -17,6 +17,7 @@ namespace TaskManager.Repository.Specifications
         public Expression<Func<T, object>>? OrderByDescExpression { get; private set; }
 
         public BasicSpecification(Expression<Func<T, bool>> criteria) => Criteria = criteria;
+        public BasicSpecification() { }
 
         protected virtual void AddInclude(Expression<Func<T, object>> includeExpression)
             => Includes.Add(includeExpression);

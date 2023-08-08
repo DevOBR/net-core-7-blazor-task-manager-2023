@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Components.Web;
+﻿using CurrieTechnologies.Razor.SweetAlert2;
+using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using TaskManager.Frontend;
 using TaskManager.Frontend.WebRepository;
@@ -9,6 +10,7 @@ builder.RootComponents.Add<HeadOutlet>("head::after");
 
 builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri("https://localhost:7151/") });
 builder.Services.AddScoped<IWebRepository, WebRepository>();
+builder.Services.AddSweetAlert2();
 
 await builder.Build().RunAsync();
 

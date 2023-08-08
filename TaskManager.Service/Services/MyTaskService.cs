@@ -23,7 +23,7 @@ namespace TaskManager.Service.Services
 
         public async Task<IEnumerable<MyTaskDto>> GetMyTasksAll(bool asNoTracking = false, CancellationToken cancellationToken = default)
         {
-            var result = await _myTaskRepository.ListAsync(asNoTracking, cancellationToken);
+            var result = await _myTaskRepository.ListOrderedByDateAsync(asNoTracking, cancellationToken);
             return result.Select(Extensions.ToMyTaskModel);
         }
 

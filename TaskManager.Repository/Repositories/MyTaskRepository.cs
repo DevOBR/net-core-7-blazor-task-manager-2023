@@ -16,6 +16,16 @@ namespace TaskManager.Repository.Repositories
         {
             return ApplySpecification(new MyTaskById(id)).FirstOrDefaultAsync(cancellationToken);
         }
+
+        public Task<List<MyTask>> ListOrderedByDateAsync(bool asNoTracking = false, CancellationToken cancellationToken = default)
+        {
+            var soecification = new MyTasksOrderedByDateAsc();
+
+            if (!asNoTracking) 
+                return ApplySpecification(soecification).ToListAsync(cancellationToken);
+
+            return ApplySpecification(soecification).AsNoTracking().ToListAsync(cancellationToken);
+        }
     }
 }
 
