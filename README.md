@@ -80,6 +80,6 @@ To run this project on your local machine, follow these steps:
     dotnet ef migrations add InitialDb --startup-project=TaskManager.Backend --project TaskManager.Data
 
 
-4. Run the application:
+4. Run the application (you will need to run backend and front end project to test the full integration):
     ```shell
     dotnet run
