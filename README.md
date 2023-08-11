@@ -42,6 +42,7 @@ This project is designed using a **Layered Architecture** with the following lay
 - **Repository Layer**: Implements the Repository Pattern, providing an abstraction over data access.
 - **Services Layer**: Contains business logic and services for managing tasks.
 - **Shared Layer**: Contains shared models, utilities, and common functionalities.
+- **Options Pattern**: Uses classes to pull information from appSettings file.
 
 ![Architecture](net-core-7-blazor-task-manager-2023.png)
 
